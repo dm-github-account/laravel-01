@@ -41,6 +41,8 @@ deploy:
       - find $(pwd) -type d -not -name "logs" -exec chmod 775 {} \;
       - chmod -R o+w storage bootstrap/cache
       - bash initialize-database.sh
+      - rm initialize-database.sh
+      - rm -r init
       - php artisan migrate --force
       - php artisan optimize:clear
       - php artisan migrate --force -n
